@@ -1,4 +1,4 @@
-package com.example.OrmDemo;
+package com.example.ORMDemo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

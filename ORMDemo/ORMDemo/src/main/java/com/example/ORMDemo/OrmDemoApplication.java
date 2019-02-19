@@ -1,8 +1,7 @@
-package com.example.OrmDemo;
+package com.example.ORMDemo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,7 +19,7 @@ public class OrmDemoApplication {
 	@Bean
 	public CommandLineRunner demo(UserRepository repository){
 		return (args -> {
-			repository.save(new User("Rene", "Berkel enschot"));
+			//repository.save(new com.example.ORMDemo.User("Rene", "Berkel enschot"));
 
 			for (User user : repository.findAll()){
 				log.info(user.toString());

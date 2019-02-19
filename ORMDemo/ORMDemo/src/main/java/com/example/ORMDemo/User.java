@@ -1,4 +1,8 @@
-package com.example.OrmDemo;
+package com.example.ORMDemo;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,20 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class User {
+
+public class User extends ResourceSupport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
     private String name;
     private String adress;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -41,14 +38,16 @@ public class User {
 
     }
 
-    public User(String name, String adress) {
+
+    @JsonCreator
+    public User(@JsonProperty String name, @JsonProperty String adress) {
         this.name = name;
         this.adress = adress;
     }
 
     @Override
     public String toString() {
-        return "User{" +
+        return "com.example.ORMDemo.User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", adress='" + adress + '\'' +
