@@ -35,12 +35,11 @@ public class DemoController {
 
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
     public HttpEntity<Iterable<User>> getAllUsers() {
-        log.info("Request received");
         // This returns a JSON or XML with the users
         Iterable<User> users = repository.findAll();
 
         for (User user : users){
-            user.add(linkTo(methodOn(DemoController.class).addNewUser(user.getName(),user.getAdress())).withSelfRel());
+            user.add(linkTo(methodOn(DemoController.class).addNewUser("","")).withSelfRel());
             user.add(linkTo(methodOn(DemoController.class).getAllUsers()).withSelfRel());
         }
 
