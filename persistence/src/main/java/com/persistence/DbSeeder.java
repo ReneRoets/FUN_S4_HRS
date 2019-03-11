@@ -1,8 +1,12 @@
 package com.persistence;
 
+import com.domain.models.User;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import com.persistence.repositories.UserRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class DbSeeder implements CommandLineRunner {
