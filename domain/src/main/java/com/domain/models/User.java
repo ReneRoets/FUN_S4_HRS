@@ -14,14 +14,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    private String adress;
+    private String password;
+    private String email;
+    private long wage;
 
     protected User() {
     }
 
-    public User(String name, String adress) {
+    public User(String name, String adress, String email, long wage) {
         this.name = name;
-        this.adress = adress;
+        this.password = adress;
+        this.email = email;
+        this.wage = wage;
     }
 
     @Override
@@ -29,7 +33,13 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", adress='" + adress + '\'' +
+                ", email='" + email + '\'' +
+                ", adress='" + password + '\'' +
                 '}';
+    }
+
+
+    public User Login(String email, String password){
+        return this;
     }
 }
