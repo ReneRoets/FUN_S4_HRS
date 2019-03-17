@@ -7,10 +7,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Component;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class,})
 @EnableJpaRepositories(basePackages = {"com.persistence"})
 @EntityScan(basePackages = {"com.domain"})
 @ComponentScan(basePackages = {"com.persistence"})
+
 public class Application {
     public static void main(String[] args){
         SpringApplication.run(Application.class);

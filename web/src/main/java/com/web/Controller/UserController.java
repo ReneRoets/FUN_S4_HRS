@@ -1,23 +1,48 @@
 package com.web.Controller;
 
+import com.domain.interfaces.IUserHandler;
 import com.domain.models.User;
+import com.logic.handlers.UserHandler;
 import com.persistence.repositories.UserRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.websocket.server.PathParam;
+import java.util.Optional;
 
-@RestController
+
+@RestController()
+@RequestMapping("/user")
 public class UserController {
-    private UserRepository repository;
+    private IUserHandler userHandler = new UserHandler();
 
-    public UserController(UserRepository repository) {
-        this.repository = repository;
+    public UserController() {
+
     }
+
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    public ResponseEntity<User> getUser(@PathParam("id") long id){
+        User user = new User("","","",1);
+        return new ResponseEntity<User>(user,HttpStatus.OK);
+    }
+
+    @GetMapping(name = "/userlogin")
+    public ResponseEntity<User> userlogin(String email, String password){
+        User user = userHandler.Login(email,password);
+        if (user != null) {
+            return new ResponseEntity<User>(user,HttpStatus.OK);
+        }
+        return new ResponseEntity<User>((User) null,HttpStatus.UNAUTHORIZED);
+    }
+
+    /*
 
     @GetMapping("/users")
     public List<User> getUsers(){
         List<User> users = repository.findAll();
         return users;
-    }
+    }*/
 }
