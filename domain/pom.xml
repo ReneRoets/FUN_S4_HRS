@@ -9,10 +9,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.example</groupId>
     <artifactId>domain</artifactId>
-    <packaging>jar</packaging>
 
 
 </project>
