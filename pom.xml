@@ -22,6 +22,7 @@
     <name>funs4hrs</name>
     <description>Demo project for Spring Boot</description>
 
+
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -71,7 +72,19 @@
     </dependencies>
 
     <build>
-        <plugins><!--
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.web.Application</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin><!--
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

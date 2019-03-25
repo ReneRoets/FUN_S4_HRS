@@ -72,6 +72,7 @@ public class UserController implements IUserController {
 
     @Override
     public ResponseEntity delete(int id) {
-        return (ResponseEntity)userHandler.delete(id);
+        userHandler.delete(id);
+        return new ResponseEntity(null,HttpStatus.valueOf(400));
     }
 }
