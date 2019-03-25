@@ -10,7 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 public class User extends ResourceSupport{
 
     public Link getId() {
@@ -28,11 +29,19 @@ public class User extends ResourceSupport{
     protected User() {
     }
 
-    public User(String name, String adress, String email, long wage) {
+    public User(String name, String password, String email, long wage) {
         this.name = name;
-        this.password = adress;
+        this.password = password;
         this.email = email;
         this.wage = wage;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     @Override
