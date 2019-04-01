@@ -32,7 +32,7 @@ public class UserService implements ICRUD {
 
     @Override
     public Object create(Object entity) {
-        iUserRepository.save((User)entity);
+        iUserRepository.save((User) entity);
         return entity;
     }
 
@@ -48,7 +48,7 @@ public class UserService implements ICRUD {
 
     @Override
     public Object update(Object entity) {
-        iUserRepository.save((User)entity);
+        iUserRepository.save((User) entity);
         return entity;
     }
 

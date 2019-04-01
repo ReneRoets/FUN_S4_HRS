@@ -5,5 +5,6 @@ import com.domain.models.User;
 
 public interface IUserHandler extends ICRUD {
     User Login(String email, String password);
+
     User getUser(long id);
 }
