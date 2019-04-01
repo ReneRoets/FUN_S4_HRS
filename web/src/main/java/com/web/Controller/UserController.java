@@ -32,12 +32,12 @@ public class UserController implements IUserController {
 
     @GetMapping(value = "/getUser")
     @ResponseBody
-    public ResponseEntity getUser(@PathParam("id") long id){
+    public ResponseEntity getUser(@PathParam("id") long id) {
         User user = userHandler.getUser(id);
         if (user != null) {
             user.add(linkTo(methodOn(UserController.class).getUser(id)).withSelfRel());
             user.add(linkTo(methodOn(UserController.class).checkLogin("email", "passowrd")).withSelfRel());
-            return new ResponseEntity<User>(user,HttpStatus.valueOf(200));
+            return new ResponseEntity<User>(user, HttpStatus.valueOf(200));
         } else {
             return new ResponseEntity(null, HttpStatus.valueOf(404));
         }
@@ -45,34 +45,34 @@ public class UserController implements IUserController {
 
     @RequestMapping(value = "/CheckLogin", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity checkLogin(@RequestParam(name = "email",required = true) String email,@RequestParam(name = "password",required = true) String password){
-        User user = userHandler.Login(email,password);
+    public ResponseEntity checkLogin(@RequestParam(name = "email", required = true) String email, @RequestParam(name = "password", required = true) String password) {
+        User user = userHandler.Login(email, password);
         if (user != null) {
             user.add(linkTo(methodOn(UserController.class).getUser(0)).withSelfRel());
-            user.add(linkTo(methodOn(UserController.class).checkLogin("email","password")).withSelfRel());
-            return new ResponseEntity<User>(user,HttpStatus.valueOf(200));
+            user.add(linkTo(methodOn(UserController.class).checkLogin("email", "password")).withSelfRel());
+            return new ResponseEntity<User>(user, HttpStatus.valueOf(200));
         }
-        return new ResponseEntity(null,HttpStatus.valueOf(401));
+        return new ResponseEntity(null, HttpStatus.valueOf(401));
     }
 
     @Override
     public ResponseEntity create(String name, String password, String email, long wage) {
-        return (ResponseEntity)userHandler.create(new User(name,password,email,wage));
+        return (ResponseEntity) userHandler.create(new User(name, password, email, wage));
     }
 
     @Override
     public ResponseEntity read(int id) {
-        return (ResponseEntity)userHandler.read(id);
+        return (ResponseEntity) userHandler.read(id);
     }
 
     @Override
     public ResponseEntity update(String name, String password, String email, long wage) {
-        return (ResponseEntity)userHandler.update(new User(name,password,email,wage));
+        return (ResponseEntity) userHandler.update(new User(name, password, email, wage));
     }
 
     @Override
     public ResponseEntity delete(int id) {
         userHandler.delete(id);
-        return new ResponseEntity(null,HttpStatus.valueOf(400));
+        return new ResponseEntity(null, HttpStatus.valueOf(400));
     }
 }

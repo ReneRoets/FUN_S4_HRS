@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @Setter
-public class User extends ResourceSupport{
+public class User extends ResourceSupport {
 
     public Link getId() {
         return new Link(id.toString());
@@ -55,7 +55,7 @@ public class User extends ResourceSupport{
     }
 
 
-    public User Login(String email, String password){
+    public User Login(String email, String password) {
         return this;
     }
 }

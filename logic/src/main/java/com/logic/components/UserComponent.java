@@ -19,7 +19,7 @@ public class UserComponent {
         this.userService = userService;
     }
 
-    public User Login(String email, String password){
+    public User Login(String email, String password) {
         User user = userService.getUser(email);
         if (Objects.equals(user.getEmail(), email) && Objects.equals(user.getPassword(), password))
             return user;
