@@ -19,7 +19,7 @@ public class UserHandler implements IUserHandler {
     private UserComponent userComponent;
 
     @Autowired
-    public UserHandler(UserService service, UserComponent component){
+    public UserHandler(UserService service, UserComponent component) {
         userService = service;
         userComponent = component;
     }
@@ -27,7 +27,7 @@ public class UserHandler implements IUserHandler {
 
     @Override
     public User Login(String email, String password) {
-        return userComponent.Login(email,password);
+        return userComponent.Login(email, password);
     }
 
     @Override
